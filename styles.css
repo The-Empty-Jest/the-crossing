@@ -1,0 +1,174 @@
+main{
+	width: 100%;
+	min-width: 1200px;
+	background-color: #252025;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+main > div{
+	margin: 0;
+	padding: 0;
+	float: left;
+	height: 100vh;
+}
+
+#left, #right{
+	width: 35%;
+	background-color: rgba(48, 42, 48, .4);
+	border-radius: 5px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+}
+
+#chasm{
+	width: 30%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#ship{
+	transform: translate(-200px, 150px);
+}
+
+#ship.animate-right{
+	animation: move-right 2s forwards;
+}
+
+#ship.animate-left{
+	animation: move-left 2s;
+}
+
+#ship::before{
+	content: url(images/transistor_glow.png);
+	position: absolute;
+	z-index: -1;
+}
+
+#ship > img{
+	transition: opacity .5s;
+}
+
+#ship span{
+	position: absolute;
+	top: 218px;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 0;
+	opacity: 0;
+	transition: opacity .8s;
+}
+
+#ship span:hover{
+	opacity: .8;
+}
+
+#ship span img{
+	width: 100px;
+	margin: 0 5px;
+	border-radius: 4px;
+}
+
+.card-container{
+	height: 276px;
+	padding: 20px;
+	margin: 25px auto;
+	border-radius: 5px;
+	background-color: rgba(150, 125, 150, .2);
+	background-position: center;
+	background-repeat: no-repeat;
+	border: 2px solid white;
+	position: relative;
+}
+
+.card-container::before{
+	display: block;
+	position: absolute;
+	content: "";
+	width: 82%;
+	height: 88%;
+	border: 1px solid white;
+	border-radius: 3px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: -1;
+}
+
+#left .card-container{
+	background-image: url(images/camerata.png);
+	background-size: 40% auto;
+}
+
+#right .card-container{
+	background-image: url(images/cloudbank.png);
+	background-size: 89% auto;
+}
+
+.card-container img{
+	border-radius: 4px;
+	height: 100%;
+	cursor: pointer;
+	/*position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);*/
+}
+
+.card-container::after{
+	content: "";
+	display: block;
+	height: 276px;
+	width: 156px;
+}
+
+.fade-out{
+	transition: opacity 1s;
+	opacity: 0;
+}
+
+.fade-in{
+	transition: opacity 1s;
+	opacity: 1;
+}
+
+.kill{
+	transition: all 1s;
+	opacity: 0;
+	transform: scale(1.5)
+}
+
+@keyframes move-right{
+	0%{
+		transform: translate(-200px, 150px);
+	}
+	30%{
+		transform: translate(-200px, -100px);
+	}
+	70%{
+		transform: translate(200px, -100px);
+	}
+	100%{
+		transform: translate(200px, 150px);
+	}
+}
+
+@keyframes move-left{
+	0%{
+		transform: translate(200px, 150px);
+	}
+	30%{
+		transform: translate(200px, -100px);
+	}
+	70%{
+		transform: translate(-200px, -100px);
+	}
+	100%{
+		transform: translate(-200px, 150px);
+	}
+}
