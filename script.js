@@ -215,10 +215,11 @@ function lose(side){
 }
 
 Element.prototype.matchSelector = function(selector){
-	return this.msMatchesSelector(selector)
-		|| this.matches(selector)
-		|| this.webkitMatchesSelector(selector)
-		|| this.mozMatchesSelector(selector);
+	if(typeof(this.msMatchesSelector) == "function"){
+		return this.msMatchesSelector(selector);
+	}else{
+		return this.matches(selector);
+	}
 }
 /*function findEmpty(side){
 	for(var i = 0; i < side.childElementCount; i++){
