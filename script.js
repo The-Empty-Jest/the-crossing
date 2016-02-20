@@ -20,18 +20,6 @@ function initialize(){
 	rightCards = [0, 0];
 	shipCards = [0, 0];
 	locations = [leftCards, rightCards, shipCards];
-	
-	/*ship.ondragover = function(event){
-		ship.querySelector("img").classList.add("hide");
-	}
-	
-	ship.ondragleave = function(event){
-		ship.querySelector("img").classList.remove("hide");
-	}*/
-}
-
-function shuffleCards(){
-	var users = []
 }
 
 function dragToShip(event){
@@ -109,23 +97,6 @@ function fadeIn(element){
 	element.classList.remove("fade-out");
 	element.classList.add("fade-in")
 }
-
-/*function drop(event){
-	if(event.target.matches("#ship > img") && preview.childElementCount < 2){
-		preview.appendChild(card);
-		transferCard(getLocation(source), 2, getType(card));
-	}
-	else if(event.target.matches("#" + ship.side + " .card-container")){
-		if(card.parentElement.matches("#preview")){
-			event.target.appendChild(card);
-			transferCard(2, getLocation(event.target.parentElement), getType(card));
-		}
-		else if(card.parentElement.parentElement.matches("#" + ship.side)){
-			event.target.appendChild(card);
-			transferCard(getLocation(source), getLocation(card.parentElement.parentElement), getType(card));
-		}
-	}
-}*/
 
 function push(event){
 	if(preview.hasChildNodes()){
@@ -221,56 +192,3 @@ Element.prototype.matchSelector = function(selector){
 		return this.matches(selector);
 	}
 }
-/*function findEmpty(side){
-	for(var i = 0; i < side.childElementCount; i++){
-		if(!(side.children[i].hasChildNodes())){
-			console.log(side.children[i]);
-			return side.children[i];
-		}
-	}
-	return null;
-}*/
-
-
-/*function pickUp(event){
-	if(true){
-		//event.dataTransfer.setDragImage(new Image(), 0, 0);
-		var img = event.target;
-		var oldX = $(img).offset().left;
-		var oldY = $(img).offset().top;
-		var x = event.pageX - oldX;
-		var y = event.pageY - oldY;
-		ship.style.position = "fixed";
-		console.log(event.target);
-		//img.parentElement.classList.add("empty");
-		//img.style.height = "100px";
-		//img.style.width = "100px";
-		//img.style.borderRadius = "50%";
-		window.onmousemove = function(event){
-			ship.style.left = (event.pageX - x) + "px";
-			ship.style.top = (event.pageY - y) + "px";
-		}
-		/*window.ondragend = function(event){
-			if(intersecting(img, ship)){
-				img.style.display = "none";
-			}
-			else{
-				window.ondrag = null;
-				img.parentElement.classList.remove("empty");
-				img.style.position = "initial";
-				img.style.left = "initial";
-				img.style.top = "initial";
-			}
-		}
-	}
-	return false;
-}*/
-
-/*function intersecting(el1, el2){
-	box1 = el1.getBoundingClientRect();
-	box2 = el2.getBoundingClientRect();
-	return !(box1.top > box2.bottom ||
-      box1.right < box2.left ||
-      box1.bottom < box2.top ||
-      box1.left > box2.right)
-}*/
